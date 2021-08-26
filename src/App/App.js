@@ -1,7 +1,8 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header';
 import Navbar from '../Navbar/Navbar';
+import PastWorkouts from '../PastWorkouts/PastWorkouts';
 
 function App() {
   return (
@@ -9,6 +10,10 @@ function App() {
       <div className="App-header">
         <Header />
         <Navbar />
+        <Route path="/" exact>
+          <PastWorkouts />
+        </Route>
+
       </div>
     </Router>
   );
