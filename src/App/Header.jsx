@@ -1,7 +1,11 @@
+import Typography from '@material-ui/core/Typography';
+
 function Header() {
     return (
-        <div>
-            
+        <div className="App-header">
+            <Typography component="h1" variant="h2">
+                Exercise Tracker
+            </Typography>
         </div>
     )
 }
