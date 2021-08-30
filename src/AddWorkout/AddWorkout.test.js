@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AddWorkout from './AddWorkout';
 
@@ -50,6 +50,36 @@ describe('AddWorkout component', () => {
             const filledInput = screen.getByDisplayValue('Reached my personal best!');
             expect(filledInput).toBeInTheDocument();
         })
+
+        test('workout select menu',  () => {
+            render(<AddWorkout />);
+
+            const select = screen.getByLabelText('Workout Type');
+            userEvent.click(select);
+            
+            const choice = screen.getByText('Climbing');
+            userEvent.click(choice);
+
+            // material-UI creates multiple instances of the select options in the
+            // background
+            const selectedElement = screen.queryAllByText('Climbing')
+            expect(selectedElement).not.toBeNull();
+        })
+
+        // test('date input', () => {
+        //     render(<AddWorkout />);
+
+        //     const select = screen.getByLabelText('Workout Type');
+        //     userEvent.click(select);
+            
+        //     const choice = screen.getByText('Climbing');
+        //     userEvent.click(choice);
+
+        //     // material-UI creates multiple instances of the select options in the
+        //     // background
+        //     const selectedElement = screen.queryAllByText('Climbing')
+        //     expect(selectedElement).not.toBeNull();
+        // })
     })
 
 })
