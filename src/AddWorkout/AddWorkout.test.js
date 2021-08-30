@@ -13,7 +13,7 @@ describe('AddWorkout component', () => {
     test('contains a description field', () => {
         render(<AddWorkout />);
 
-        const input = screen.getByRole('textbox');
+        const input = screen.getByTestId('descriptionInput');
         expect(input).toBeInTheDocument();
     })
 
@@ -22,5 +22,12 @@ describe('AddWorkout component', () => {
 
         const select = screen.getByLabelText('Workout Type');
         expect(select).toBeInTheDocument();
+    })
+
+    test('contains a date picker', () => {
+        render(<AddWorkout />);
+
+        const input = screen.getByTestId('dateInput');
+        expect(input).toBeInTheDocument();
     })
 })

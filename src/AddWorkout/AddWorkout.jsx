@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function AddWorkout() {
     const [workoutType, setWorkoutType] = useState('default');
+    const [date, setDate] = useState('');
 
 
     return (
@@ -15,9 +16,11 @@ function AddWorkout() {
                 Add A Workout
             </Typography>
             <form>
+
                 <TextField
                     type="text"
                     label="Description"
+                    inputProps={{ "data-testid": "descriptionInput" }}
                 />
                 <InputLabel id="workoutTypeLabel">Workout Type</InputLabel>
                 <Select
@@ -27,6 +30,12 @@ function AddWorkout() {
                     <MenuItem value={'default'}>Choose one</MenuItem>
                     <MenuItem value={'climbing'}>Climbing</MenuItem>
                 </Select>
+                <TextField
+                    label="Date"
+                    type="date"
+                    value={date}
+                    inputProps={{ "data-testid": "dateInput" }}
+                />
             </form>
         </div>
     )
