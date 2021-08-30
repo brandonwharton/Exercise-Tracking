@@ -1,11 +1,14 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Router } from 'react-router-dom';
 import Navbar from './Navbar';
+import { createMemoryHistory } from 'history';
 
 describe('home link', () => {
     test('renders correctly', () => {
-        render(<Router>
+        const history = createMemoryHistory();
+
+        render(<Router history={history}>
                 <Navbar />
                </Router>);
     
@@ -14,16 +17,17 @@ describe('home link', () => {
     })
 
     test('navigates to home page', () => {
-        render(<Router>
+        const history = createMemoryHistory();
+
+        render(<Router history={history}>
                 <Navbar />
                </Router>);
 
         const homeButton = screen.getByText('Home');
-        const leftClick = {button: 0}
-        userEvent.click(homeButton, leftClick);
+        userEvent.click(homeButton);
         
-        const heading = screen.getByText('Your Past Workouts');
-        expect(heading).toBeInTheDocument();
+        // const heading = screen.getByText('Your Past Workouts');
+        expect(history.location.pathname).toEqual('/');
     })
 
 
