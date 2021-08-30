@@ -10,24 +10,31 @@ describe('AddWorkout component', () => {
         expect(heading).toBeInTheDocument();
     })
 
-    test('contains a description field', () => {
+    test('renders a description field', () => {
         render(<AddWorkout />);
 
         const input = screen.getByTestId('descriptionInput');
         expect(input).toBeInTheDocument();
     })
 
-    test('contains a select menu for type', () => {
+    test('renders a select menu for type', () => {
         render(<AddWorkout />);
 
         const select = screen.getByLabelText('Workout Type');
         expect(select).toBeInTheDocument();
     })
 
-    test('contains a date picker', () => {
+    test('renders a date picker', () => {
         render(<AddWorkout />);
 
         const input = screen.getByTestId('dateInput');
         expect(input).toBeInTheDocument();
+    })
+
+    test('renders a submit button', () => {
+        render(<AddWorkout />);
+
+        const button = screen.getByText('Submit');
+        expect(button).toBeInTheDocument();
     })
 })
