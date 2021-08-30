@@ -47,6 +47,7 @@ function AddWorkout() {
                     label="Date"
                     type="date"
                     value={formObject.date}
+                    onChange={event => handleFormChange('date', event.target.value)}
                     inputProps={{ "data-testid": "dateInput" }}
                 />
                 <Button

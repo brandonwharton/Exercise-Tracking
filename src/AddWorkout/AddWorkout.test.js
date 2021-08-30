@@ -66,20 +66,15 @@ describe('AddWorkout component', () => {
             expect(selectedElement).not.toBeNull();
         })
 
-        // test('date input', () => {
-        //     render(<AddWorkout />);
+        test('date input', () => {
+            render(<AddWorkout />);
 
-        //     const select = screen.getByLabelText('Workout Type');
-        //     userEvent.click(select);
-            
-        //     const choice = screen.getByText('Climbing');
-        //     userEvent.click(choice);
+            const input = screen.getByTestId('dateInput');
+            userEvent.type(input, '01012001');
 
-        //     // material-UI creates multiple instances of the select options in the
-        //     // background
-        //     const selectedElement = screen.queryAllByText('Climbing')
-        //     expect(selectedElement).not.toBeNull();
-        // })
+            const displayedDate = screen.getByDisplayValue('2001-01-01');
+            expect(displayedDate).toBeInTheDocument();
+        })
     })
 
 })
