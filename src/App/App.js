@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import Navbar from '../Navbar/Navbar';
 import PastWorkouts from '../PastWorkouts/PastWorkouts';
+import AddWorkout from '../AddWorkout/AddWorkout';
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
         <Route path="/" exact>
           <PastWorkouts />
         </Route>
-
+        <Route path="/add">
+          <AddWorkout />
+        </Route>
       </div>
     </Router>
   );
