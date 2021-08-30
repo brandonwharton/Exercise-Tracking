@@ -7,9 +7,22 @@ import Button from '@material-ui/core/Button';
 import { useState } from 'react';
 
 function AddWorkout() {
-    const [workoutType, setWorkoutType] = useState('default');
-    const [date, setDate] = useState('');
+    // const [description, setDescription] = useState('');
+    // const [workoutType, setWorkoutType] = useState('default');
+    // const [date, setDate] = useState('');
+    
+    const [formObject, setFormObject] = useState({
+        description: '',
+        workoutType: 'default',
+        date: ''
+    })
 
+    const handleFormChange = (source, value) => {
+        setFormObject({
+            ...formObject,
+            [source]: value
+        });
+    }
 
     return (
         <div>
@@ -17,15 +30,16 @@ function AddWorkout() {
                 Add A Workout
             </Typography>
             <form>
-
                 <TextField
                     type="text"
                     label="Description"
                     inputProps={{ "data-testid": "descriptionInput" }}
+                    onChange={event => handleFormChange('description', event.target.value)}
+                    value={formObject.description}
                 />
                 <InputLabel id="workoutTypeLabel">Workout Type</InputLabel>
                 <Select
-                    value={workoutType}
+                    value={formObject.workoutType}
                     labelId="workoutTypeLabel"
                 >
                     <MenuItem value={'default'}>Choose one</MenuItem>
@@ -34,7 +48,7 @@ function AddWorkout() {
                 <TextField
                     label="Date"
                     type="date"
-                    value={date}
+                    value={formObject.date}
                     inputProps={{ "data-testid": "dateInput" }}
                 />
                 <Button
