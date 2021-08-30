@@ -9,4 +9,18 @@ describe('AddWorkout component', () => {
         const heading = screen.getByText('Add A Workout');
         expect(heading).toBeInTheDocument();
     })
+
+    test('contains a description field', () => {
+        render(<AddWorkout />);
+
+        const input = screen.getByRole('textbox');
+        expect(input).toBeInTheDocument();
+    })
+
+    test('contains a select menu for type', () => {
+        render(<AddWorkout />);
+
+        const select = screen.getByLabelText('Workout Type');
+        expect(select).toBeInTheDocument();
+    })
 })
