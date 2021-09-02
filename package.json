@@ -2,6 +2,7 @@
   "name": "exercise-tracker",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:5000",
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
@@ -30,7 +31,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:coverage": "CI=true npm test -- --env=jsdom --coverage",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "client": "react-scripts start",
+    "server": "nodemon --watch server server/server.js"
   },
   "eslintConfig": {
     "extends": [
