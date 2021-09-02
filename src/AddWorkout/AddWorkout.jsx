@@ -9,6 +9,7 @@ import DatePicker from '@mui/lab/DatePicker'
 
 import { useState } from 'react';
 import axios from 'axios';
+import { useEffect } from 'react';
 
 
 function AddWorkout() {
@@ -17,6 +18,16 @@ function AddWorkout() {
         workoutType: 'default',
         date: new Date()
     })
+
+    const [activities, setActivities] = useState([]);
+
+    // useEffect(() => {
+    //     // GET all activities on load for Select dropdown
+
+    // }, [])
+
+
+
 
     const handleFormChange = (source, value) => {
         setFormObject({

@@ -88,6 +88,7 @@ describe('AddWorkout component', () => {
         // })
     })
 
+    describe('contains ')
     // describe('has a submit function that', () => {
     //     test('fires on click of button', () => {
     //         render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
