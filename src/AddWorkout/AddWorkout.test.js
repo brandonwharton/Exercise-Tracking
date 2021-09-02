@@ -88,4 +88,15 @@ describe('AddWorkout component', () => {
         // })
     })
 
+    // describe('has a submit function that', () => {
+    //     test('fires on click of button', () => {
+    //         render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
+    
+    //         const button = screen.getByText('Submit');
+    //         userEvent.click(button);
+
+            
+    //     })
+    // })
+
 })

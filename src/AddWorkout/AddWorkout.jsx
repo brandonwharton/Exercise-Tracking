@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import DatePicker from '@mui/lab/DatePicker'
 
 import { useState } from 'react';
+import axios from 'axios';
 
 
 function AddWorkout() {
@@ -24,18 +25,30 @@ function AddWorkout() {
         });
     }
 
-    // console.log('formObject', formObject);
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        
+        axios.post('/api/workouts', formObject)
+        .then(response => {
+            console.log(response);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+
+
     return (
         <div>
             <Typography component="h2" variant="h3">
                 Add A Workout
             </Typography>
-            <form>
+            <form onSubmit={event => handleFormSubmit(event)}>
                 <TextareaAutosize
                     type="text"
                     aria-label="description"
                     placeholder="Description"
-                    // inputProps={{ "data-testid": "descriptionInput" }}
                     onChange={event => handleFormChange('description', event.target.value)}
                     value={formObject.description}
                 />
@@ -53,7 +66,6 @@ function AddWorkout() {
                     value={formObject.date}
                     onChange={newValue => handleFormChange('date', newValue)}
                     renderInput={(params) => <TextField {...params} />}
-                    inputProps={{ "data-testid": "dateInput" }}
                 />
 
                 <Button
