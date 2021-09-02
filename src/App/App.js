@@ -5,19 +5,24 @@ import Navbar from '../Navbar/Navbar';
 import PastWorkouts from '../PastWorkouts/PastWorkouts';
 import AddWorkout from '../AddWorkout/AddWorkout';
 
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
 function App() {
   return (
     <Router>
-      <div className="App-header">
-        <Header />
-        <Navbar />
-        <Route path="/" exact>
-          <PastWorkouts />
-        </Route>
-        <Route path="/add">
-          <AddWorkout />
-        </Route>
-      </div>
+      <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <div className="App-header">
+          <Header />
+          <Navbar />
+          <Route path="/" exact>
+            <PastWorkouts />
+          </Route>
+          <Route path="/add">
+            <AddWorkout />
+          </Route>
+        </div>
+      </LocalizationProvider>
     </Router>
   );
 }

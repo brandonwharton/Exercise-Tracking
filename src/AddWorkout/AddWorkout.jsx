@@ -1,16 +1,20 @@
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
+import Typography from '@mui/material/Typography';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import TextField from '@mui/material/TextField';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import Button from '@mui/material/Button';
+import DatePicker from '@mui/lab/DatePicker'
+
 import { useState } from 'react';
+
 
 function AddWorkout() {
     const [formObject, setFormObject] = useState({
         description: '',
         workoutType: 'default',
-        date: ''
+        date: new Date()
     })
 
     const handleFormChange = (source, value) => {
@@ -27,10 +31,11 @@ function AddWorkout() {
                 Add A Workout
             </Typography>
             <form>
-                <TextField
+                <TextareaAutosize
                     type="text"
-                    label="Description"
-                    inputProps={{ "data-testid": "descriptionInput" }}
+                    aria-label="description"
+                    placeholder="Description"
+                    // inputProps={{ "data-testid": "descriptionInput" }}
                     onChange={event => handleFormChange('description', event.target.value)}
                     value={formObject.description}
                 />
@@ -43,13 +48,14 @@ function AddWorkout() {
                     <MenuItem value={'default'}>Choose one</MenuItem>
                     <MenuItem value={'climbing'}>Climbing</MenuItem>
                 </Select>
-                <TextField
+                <DatePicker
                     label="Date"
-                    type="date"
                     value={formObject.date}
-                    onChange={event => handleFormChange('date', event.target.value)}
+                    onChange={newValue => handleFormChange('date', newValue)}
+                    renderInput={(params) => <TextField {...params} />}
                     inputProps={{ "data-testid": "dateInput" }}
                 />
+
                 <Button
                     variant="contained"
                     color="primary"
