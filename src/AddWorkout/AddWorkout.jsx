@@ -15,16 +15,22 @@ import { useEffect } from 'react';
 function AddWorkout() {
     const [formObject, setFormObject] = useState({
         description: '',
-        workoutType: 'default',
-        date: new Date()
+        workoutType: 1,
+        date: ''
     })
 
     const [activities, setActivities] = useState([]);
 
-    // useEffect(() => {
-    //     // GET all activities on load for Select dropdown
-
-    // }, [])
+    useEffect(() => {
+        // GET all activities on load for Select dropdown
+        axios.get('/api/activity')
+        .then(response => {
+            setActivities(response.data);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }, [])
 
 
 
@@ -49,7 +55,6 @@ function AddWorkout() {
     }
 
 
-
     return (
         <div>
             <Typography component="h2" variant="h3">
@@ -68,15 +73,23 @@ function AddWorkout() {
                     value={formObject.workoutType}
                     labelId="workoutTypeLabel"
                     onChange={event => handleFormChange('workoutType', event.target.value)}
-                >
-                    <MenuItem value={'default'}>Choose one</MenuItem>
-                    <MenuItem value={'climbing'}>Climbing</MenuItem>
+                >   
+                    {activities.map(activity => {
+                        return (
+                        <MenuItem value={activity.id} key={activity.id}>
+                            {activity.name}
+                        </MenuItem>
+                        )
+                    })}
                 </Select>
                 <DatePicker
                     label="Date"
                     value={formObject.date}
                     onChange={newValue => handleFormChange('date', newValue)}
                     renderInput={(params) => <TextField {...params} />}
+                    InputProps={{
+                        "data-testid": "date-picker",
+                    }}
                 />
 
                 <Button

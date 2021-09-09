@@ -74,12 +74,13 @@ describe('AddWorkout component', () => {
         // need to come back to date input tests
 
         // test('date input', () => {
-        //     render(<AddWorkout />);
+        //     render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
 
-        //     const input = screen.getByPlaceholderText('Date');
-        //     userEvent.type(input, '01012001');
-        //     // userEvent.type(input, '01');
-        //     // userEvent.type(input, '2001');
+        //     // const input = screen.getByPlaceholderText('Date');
+        //     const input = screen.getByTestId('date-picker')
+        //     // const input = screen.findByRole('textbox', { name: 'Date'})
+        //     userEvent.type(input, '01012001', {delay: 1});
+
 
         //     const displayedDate = screen.getByDisplayValue('01/01/2001');
         //     // const displayedDate2 = screen.getByPlaceholderText('2001-01-01');
@@ -88,7 +89,6 @@ describe('AddWorkout component', () => {
         // })
     })
 
-    describe('contains ')
     // describe('has a submit function that', () => {
     //     test('fires on click of button', () => {
     //         render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
