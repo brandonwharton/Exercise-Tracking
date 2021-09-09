@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 function AddWorkout() {
     const [formObject, setFormObject] = useState({
         description: '',
-        activity_id: 1,
+        activity_id: '',
         date: ''
     })
 
