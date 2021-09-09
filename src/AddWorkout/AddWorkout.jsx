@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 function AddWorkout() {
     const [formObject, setFormObject] = useState({
         description: '',
-        workoutType: 1,
+        activity_id: 1,
         date: ''
     })
 
@@ -44,7 +44,7 @@ function AddWorkout() {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        
+
         axios.post('/api/workouts', formObject)
         .then(response => {
             console.log(response);
@@ -70,7 +70,7 @@ function AddWorkout() {
                 />
                 <InputLabel id="workoutTypeLabel">Workout Type</InputLabel>
                 <Select
-                    value={formObject.workoutType}
+                    value={formObject.activity_id}
                     labelId="workoutTypeLabel"
                     onChange={event => handleFormChange('workoutType', event.target.value)}
                 >   

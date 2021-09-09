@@ -56,20 +56,20 @@ describe('AddWorkout component', () => {
             expect(filledInput).toBeInTheDocument();
         })
 
-        test('workout select menu',  () => {
-            render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
+        // test('workout select menu',  () => {
+        //     render(<LocalizationProvider dateAdapter={AdapterDateFns}><AddWorkout /></LocalizationProvider>);
 
-            const select = screen.getByLabelText('Workout Type');
-            userEvent.click(select);
+        //     const select = screen.getByLabelText('Workout Type');
+        //     userEvent.click(select);
             
-            const choice = screen.getByText('Climbing');
-            userEvent.click(choice);
+        //     const choice = screen.getByText('Climbing');
+        //     userEvent.click(choice);
 
-            // material-UI creates multiple instances of the select options in the
-            // background
-            const selectedElement = screen.queryAllByText('Climbing')
-            expect(selectedElement).not.toBeNull();
-        })
+        //     // material-UI creates multiple instances of the select options in the
+        //     // background
+        //     const selectedElement = screen.queryAllByText('Climbing')
+        //     expect(selectedElement).not.toBeNull();
+        // })
 
         // need to come back to date input tests
 
